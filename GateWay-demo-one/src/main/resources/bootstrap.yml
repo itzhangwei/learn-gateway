@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: GateWay-demo-one
+  cloud:
+    config:
+      name: GateWay-demo #配置文件名称
+      profile: one #配置文件环境
+      label: master #git分支名称
+      fail-fast: true #快速失败
+      discovery:
+        enabled: true #开启自动发现服务，从注册中心获取配置
+        service-id: cloud-config-server #注册中心中的配置中心服务名称
+    bus:
+      trace:
+        enabled: true #开启消息跟踪
+
+
+
+  rabbitmq:
+
+    host: 119.23.24.1
+    port: 5627
+    username: admin
+    password: admin
+
+
+eureka:
+  instance:
+    appname: GateWay-demo-one
+  client:
+    service-url:
+      defaultZone: http://peer1:8710/eureka/eureka #前面的eureka服务设置了项目跟路径为eureka
