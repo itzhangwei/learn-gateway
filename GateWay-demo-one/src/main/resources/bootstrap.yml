@@ -1,3 +1,6 @@
+server:
+  port: 8510
+
 spring:
   application:
     name: GateWay-demo-one
@@ -13,6 +16,7 @@ spring:
     bus:
       trace:
         enabled: true #开启消息跟踪
+      enabled: true
 
 
 
@@ -20,13 +24,20 @@ spring:
 
     host: 119.23.24.1
     port: 5627
-    username: admin
-    password: admin
+    username: guest
+    password: guest
 
 
 eureka:
   instance:
     appname: GateWay-demo-one
+    # 心跳检测检测与续约时间
+    # 测试时将值设置设置小些，保证服务关闭后注册中心能及时踢出服务
+    # 配置说明
+    #　　lease-renewal-interval-in-seconds 每间隔10s，向服务端发送一次心跳，证明自己依然”存活“
+    #　　lease-expiration-duration-in-seconds  告诉服务端，如果我20s之内没有给你发心跳，就代表我“死”了，将我踢出掉。
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
   client:
     service-url:
       defaultZone: http://peer1:8710/eureka/eureka #前面的eureka服务设置了项目跟路径为eureka
