@@ -21,7 +21,6 @@ spring:
 
 
   rabbitmq:
-
     host: 119.23.24.1
     port: 5627
     username: guest
@@ -41,3 +40,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://peer1:8710/eureka/eureka #前面的eureka服务设置了项目跟路径为eureka
+
+
+info:
+  app:
+    name: gateway-demo-noe
+    version: @project.version@
+    encoding: @project.build.sourceEncoding@
+    java:
+      version: @java.version@
