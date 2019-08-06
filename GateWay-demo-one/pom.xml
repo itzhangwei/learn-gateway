@@ -72,6 +72,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>${spring-boot-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml-version}</version>
+            <scope>provided</scope>
+        </dependency>
 
 
     </dependencies>

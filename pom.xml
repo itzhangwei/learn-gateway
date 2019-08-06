@@ -10,6 +10,10 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!--    配置编码utf8    -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <sring-cloud-version>2.1.1.RELEASE</sring-cloud-version>
         <slf4j-version>1.7.25</slf4j-version>
         <jackson-version>2.9.8</jackson-version>
@@ -19,6 +23,7 @@
         <serve-core-version>0.12.21</serve-core-version>
         <httpclient-version>4.5.9</httpclient-version>
         <gson-version>2.8.5</gson-version>
+        <snakeyaml-version>1.23</snakeyaml-version>
     </properties>
 
 
@@ -291,10 +296,27 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-actuator</artifactId>
             </dependency>
+
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <!--重要 如果不设置resource 会导致application.yaml中的@@找不到pom文件中的配置-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <!--重要 如果不设置resource 会导致application.yaml中的@@找不到pom文件中的配置-->
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
